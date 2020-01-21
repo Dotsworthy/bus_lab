@@ -31,10 +31,13 @@ class Bus
   end
 
   def pick_up_passengers_from_bus_stop(bus_stop)
-    for passenger in @bus_stop1
+    for passenger in bus_stop.queue
       pick_up_passenger(passenger)
-      bus_stop1.remove_from_queue()
     end
+    for passenger in @passengers
+      bus_stop.remove_from_queue (passenger)
+    end
+    # This only worked when I created seperate for loops. Otherwise it would skip one of the entries, is there a reason why this is?
   end
 
 end
